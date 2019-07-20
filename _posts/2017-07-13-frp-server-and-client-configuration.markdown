@@ -19,7 +19,7 @@ tags:
 
 ## 2、服务端配置 - frps
 
-frp 的服务器端，一般名为 frps，配置文件是 frps.ini。可以在 frp 官方页面 获取到最新版本的下载链接（此处以 frp_0.17.0_linux_amd64 为例）。接着使用 ssh 登录 vps 端操作，命令行如下：
+frp 的服务器端，一般名为 frps，配置文件是 frps.ini。可以在 frp 官方页面 获取到最新版本的下载链接（此处以 frp_0.26.0_linux_amd64 为例）。接着使用 ssh 登录 vps 端操作，命令行如下：
 ```
 wget https://github.com/fatedier/frp/releases/download/v0.26.0/frp_0.26.0_linux_amd64.tar.gz
 tar -zxvf frp_0.26.0_linux_amd64.tar.gz
