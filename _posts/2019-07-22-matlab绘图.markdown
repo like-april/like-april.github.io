@@ -35,19 +35,19 @@ ylabel('y')
    ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519155416476-250979062.png)
    - semilogx(),semilogy() ：半对数坐标绘图
    ```matlab
-   x=-10:0.001:10;
+x=-10:0.001:10;
 semilogy(x,2.^x);
    ```
    ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519160007447-1935269779.png)
    - polar() ：极坐标绘图
    ```matlab
-   t=0:0.01:10;
+t=0:0.01:10;
 polar(t,sin(2*t).*cos(2*t),'--.g')
    ```
    ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519160512643-266706947.png)
    - plotyy()：双纵坐标绘图
    ```matlab
-   x=0:0.1:20;
+x=0:0.1:20;
 y1=200*exp(-0.05*x).*sin(x);
 y2=0.8*exp(-0.5*x).*sin(10*x);
 ax=plotyy(x,y1,x,y2,'plot');xlabel('x');
