@@ -23,7 +23,7 @@ y=sin(x);
 plot(x,y,'-ro','linewidth',2,'markeredgecolor','b','markerfacecolor','0.49,1,0.65','markersize',14);
 xlabel('x');ylabel('y');
    ```
-  ![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180519154828204-2081856590.png)
+  ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519154828204-2081856590.png)
    - loglog() ：双对数坐标绘图
    ```matlab
 x=logspace(-1,2);
@@ -32,19 +32,19 @@ grid on
 xlabel('x')
 ylabel('y')
    ```
-   ![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180519155416476-250979062.png)
+   ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519155416476-250979062.png)
    - semilogx(),semilogy() ：半对数坐标绘图
    ```matlab
    x=-10:0.001:10;
 semilogy(x,2.^x);
    ```
-   ![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180519160007447-1935269779.png)
+   ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519160007447-1935269779.png)
    - polar() ：极坐标绘图
    ```matlab
    t=0:0.01:10;
 polar(t,sin(2*t).*cos(2*t),'--.g')
    ```
-   ![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180519160512643-266706947.png)
+   ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519160512643-266706947.png)
    - plotyy()：双纵坐标绘图
    ```matlab
    x=0:0.1:20;
@@ -54,7 +54,7 @@ ax=plotyy(x,y1,x,y2,'plot');xlabel('x');
 set(get(ax(1),'ylabel'),'string','left y');
 set(get(ax(2),'ylabel'),'string','right y');
    ```
-   ![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180519161214235-1286578122.png)
+   ![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180519161214235-1286578122.png)
    
 #### 1.2 图形修饰和说明
 - 图像线形
@@ -92,7 +92,7 @@ set(get(ax(2),'ylabel'),'string','right y');
 
 #### 2.1 常用三维绘图函数
 
-![](https://images2018.cnblogs.com/blog/1263706/201805/1263706-20180521231821086-570369472.png)
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab/1263706-20180521231821086-570369472.png)
 
 #### 2.2 图形修饰和说明
 
