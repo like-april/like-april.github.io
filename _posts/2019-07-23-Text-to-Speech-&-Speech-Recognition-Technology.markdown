@@ -1,3 +1,16 @@
+---
+layout:     post
+title:      "文本转语音&语音识别技术"
+subtitle:   " \"Text to Speech & Speech Recognition Technology\""
+date:       2019-07-23 17:24:00
+author:     "张凡"
+header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/frp_network.jpg"
+catalog: true
+tags:
+    - python
+    - AI
+---
+
 ## 1 文本转语音技术
 
 文本转语音用到的是科大讯飞的文本转语音AI的api。
