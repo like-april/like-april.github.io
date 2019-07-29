@@ -1,5 +1,5 @@
 ---
-layout:     default
+layout:     keynote
 title:      "文本转语音&语音识别技术"
 subtitle:   " \"Text to Speech & Speech Recognition Technology\""
 date:       2019-07-23 17:24:00
