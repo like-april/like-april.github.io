@@ -152,3 +152,7 @@ tags:
   
   
   ![这是那个测试的链接](http://zhangfan525.top/secret/test/)
+  ![这是那个测试的链接](http://zhangfan525.top)
+  ![这是那个测试的链接](http://zhangfan525.top/2019/07/23/Text-to-Speech-&-Speech-Recognition-Technology/)
+  ![这是那个测试的链接](http://zhangfan525.top/secret/test/)
+  ![这是那个测试的链接](http://zhangfan525.top/secret/test/)
