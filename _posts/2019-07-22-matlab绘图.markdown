@@ -7,7 +7,7 @@ author:     "张凡"
 header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/frp_network.jpg"
 catalog: true
 tags:
-    - MATLAB
+    - Matlab
 ---
 
 ## 0 前言
