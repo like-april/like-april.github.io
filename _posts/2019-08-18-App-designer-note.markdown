@@ -4,7 +4,7 @@ title:      "Matlab App Designer 笔记"
 subtitle:   " \" Matlab App Designer note\""
 date:       2019-08-18 16:01:00
 author:     "张凡"
-header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab.png"
+header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab.jpg"
 catalog: true
 tags:
     - App Designer
