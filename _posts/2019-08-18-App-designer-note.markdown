@@ -4,7 +4,7 @@ title:      "Matlab App Designer 笔记"
 subtitle:   " \" Matlab App Designer note\""
 date:       2019-08-18 16:01:00
 author:     "张凡"
-header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/matlab.jpg"
+header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/appdesigner.png"
 catalog: true
 tags:
     - App Designer
@@ -370,13 +370,325 @@ end
 
 #### 4.2 拨码开关和信号灯的使用
 
+​	以拨码开关控制信号灯为例来说说拨码开关和信号灯控件的使用。这里设置三个控制项，分别对应普通开关、跷板开关、拨码开关。
 
+​	如下图所示，将开关和信号灯拖拽到合适的位置，并修改控件相应的文本，以方便使用。
 
-#### 4.3 仪表控件的使用
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/appdesigner11.png)
 
+​	下一步添加三个开关的回调函数，以实现控制相关信号灯的功能，回调函数如下图所示，需要注意的是，由于把信号灯亮时的信号值改为了“**开**”，所以在程序中要用“**开**”代替“On”。信号灯显示的颜色由`app.Lamp.Color=[red,green,blue]`来确定，其中red、green、 blue为红绿蓝的值，其值介于0-1之间。
 
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/appdesigner12.png)
 
-#### 4.4 旋钮的使用
+​	下面动图为该app的显示效果：
 
- 
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/switch_lamp.gif)
+
+完整代码如下所示：
+
+```matlab
+classdef switch_lamp < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure       matlab.ui.Figure
+        LampLabel      matlab.ui.control.Label
+        Lamp           matlab.ui.control.Lamp
+        Lamp2Label     matlab.ui.control.Label
+        Lamp2          matlab.ui.control.Lamp
+        Lamp3Label     matlab.ui.control.Label
+        Lamp3          matlab.ui.control.Lamp
+        Label          matlab.ui.control.Label
+        Switch         matlab.ui.control.Switch
+        Switch_2Label  matlab.ui.control.Label
+        Switch_2       matlab.ui.control.RockerSwitch
+        Switch_3Label  matlab.ui.control.Label
+        Switch_3       matlab.ui.control.ToggleSwitch
+    end
+
+    methods (Access = private)
+
+        % Value changed function: Switch
+        function SwitchValueChanged(app, event)
+            value = app.Switch.Value;
+            if strcmp(value,'开')
+                app.Lamp.Color = [1,0,0];
+            else
+                app.Lamp.Color = [0,0,0];
+            end
+        end
+
+        % Value changed function: Switch_2
+        function Switch_2ValueChanged(app, event)
+            value = app.Switch_2.Value;
+            if strcmp(value,'开')
+                app.Lamp2.Color = [1,0,0];
+            else
+                app.Lamp2.Color = [0,0,0];
+            end
+        end
+
+        % Value changed function: Switch_3
+        function Switch_3ValueChanged(app, event)
+            value = app.Switch_3.Value;
+            if strcmp(value,'开')
+                app.Lamp3.Color = [1,0,0];
+            else
+                app.Lamp3.Color = [0,0,0];
+            end
+        end
+    end
+
+    % App initialization and construction
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure
+            app.UIFigure = uifigure;
+            app.UIFigure.Position = [100 100 509 316];
+            app.UIFigure.Name = 'UI Figure';
+
+            % Create LampLabel
+            app.LampLabel = uilabel(app.UIFigure);
+            app.LampLabel.HorizontalAlignment = 'right';
+            app.LampLabel.Position = [73 195 36 22];
+            app.LampLabel.Text = 'Lamp';
+
+            % Create Lamp
+            app.Lamp = uilamp(app.UIFigure);
+            app.Lamp.Position = [124 195 20 20];
+
+            % Create Lamp2Label
+            app.Lamp2Label = uilabel(app.UIFigure);
+            app.Lamp2Label.HorizontalAlignment = 'right';
+            app.Lamp2Label.Position = [204 194 42 22];
+            app.Lamp2Label.Text = 'Lamp2';
+
+            % Create Lamp2
+            app.Lamp2 = uilamp(app.UIFigure);
+            app.Lamp2.Position = [261 194 20 20];
+
+            % Create Lamp3Label
+            app.Lamp3Label = uilabel(app.UIFigure);
+            app.Lamp3Label.HorizontalAlignment = 'right';
+            app.Lamp3Label.Position = [364 195 42 22];
+            app.Lamp3Label.Text = 'Lamp3';
+
+            % Create Lamp3
+            app.Lamp3 = uilamp(app.UIFigure);
+            app.Lamp3.Position = [421 195 20 20];
+
+            % Create Label
+            app.Label = uilabel(app.UIFigure);
+            app.Label.HorizontalAlignment = 'center';
+            app.Label.Position = [91 54 53 22];
+            app.Label.Text = '普通开关';
+
+            % Create Switch
+            app.Switch = uiswitch(app.UIFigure, 'slider');
+            app.Switch.Items = {'关', '开'};
+            app.Switch.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.Switch.Position = [94 91 45 20];
+            app.Switch.Value = '关';
+
+            % Create Switch_2Label
+            app.Switch_2Label = uilabel(app.UIFigure);
+            app.Switch_2Label.HorizontalAlignment = 'center';
+            app.Switch_2Label.Position = [217 20 53 22];
+            app.Switch_2Label.Text = '跷板开关';
+
+            % Create Switch_2
+            app.Switch_2 = uiswitch(app.UIFigure, 'rocker');
+            app.Switch_2.Items = {'关', '开'};
+            app.Switch_2.ValueChangedFcn = createCallbackFcn(app, @Switch_2ValueChanged, true);
+            app.Switch_2.Position = [233 78 20 45];
+            app.Switch_2.Value = '关';
+
+            % Create Switch_3Label
+            app.Switch_3Label = uilabel(app.UIFigure);
+            app.Switch_3Label.HorizontalAlignment = 'center';
+            app.Switch_3Label.Position = [377 38 53 22];
+            app.Switch_3Label.Text = '拨动开关';
+
+            % Create Switch_3
+            app.Switch_3 = uiswitch(app.UIFigure, 'toggle');
+            app.Switch_3.Items = {'关', '开'};
+            app.Switch_3.ValueChangedFcn = createCallbackFcn(app, @Switch_3ValueChanged, true);
+            app.Switch_3.Position = [393 96 20 45];
+            app.Switch_3.Value = '关';
+        end
+    end
+
+    methods (Access = public)
+
+        % Construct app
+        function app = switch_lamp
+
+            % Create and configure components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
+```
+
+#### 4.3 旋钮及仪表控件的使用
+
+​	以旋钮控制仪表的显示值为例来讲解旋钮及仪表控件的使用，把旋钮和仪表拖拽到画布中合适的位置，并更改控件的一些属性值以方便使用。
+
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/appdesigner13.png)
+
+​	下一步就是编辑旋钮的回调函数了，右键单击旋钮的图标，选择添加回调函数，在回调函数中添加如下的代码，其中value是目前旋钮所指示的值，通过`app.Gauge.Value=value`来将旋钮的指示值赋给仪表来显示。
+
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/appdesigner14.png)
+
+ 	下面动图显示app最后的效果：
+
+![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/knob_gauge.gif)
+
+完整代码如下所示：
+
+```matlab
+classdef knob_gauge < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure      matlab.ui.Figure
+        Label         matlab.ui.control.Label
+        Gauge         matlab.ui.control.Gauge
+        Gauge_2Label  matlab.ui.control.Label
+        Gauge_2       matlab.ui.control.NinetyDegreeGauge
+        Gauge_3Label  matlab.ui.control.Label
+        Gauge_3       matlab.ui.control.LinearGauge
+        Gauge_4Label  matlab.ui.control.Label
+        Gauge_4       matlab.ui.control.SemicircularGauge
+        Label_2       matlab.ui.control.Label
+        Knob          matlab.ui.control.Knob
+        Label_3       matlab.ui.control.Label
+    end
+
+    methods (Access = private)
+
+        % Value changed function: Knob
+        function KnobValueChanged(app, event)
+            value = app.Knob.Value;
+            app.Gauge.Value=value;
+            app.Gauge_2.Value=value;
+            app.Gauge_3.Value=value;
+            app.Gauge_4.Value=value;
+        end
+    end
+
+    % App initialization and construction
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure
+            app.UIFigure = uifigure;
+            app.UIFigure.Position = [100 100 683 416];
+            app.UIFigure.Name = 'UI Figure';
+
+            % Create Label
+            app.Label = uilabel(app.UIFigure);
+            app.Label.HorizontalAlignment = 'center';
+            app.Label.Position = [78 165 29 22];
+            app.Label.Text = '仪表';
+
+            % Create Gauge
+            app.Gauge = uigauge(app.UIFigure, 'circular');
+            app.Gauge.Position = [31 202 120 120];
+
+            % Create Gauge_2Label
+            app.Gauge_2Label = uilabel(app.UIFigure);
+            app.Gauge_2Label.HorizontalAlignment = 'center';
+            app.Gauge_2Label.Position = [233 165 55 22];
+            app.Gauge_2Label.Text = '90度仪表';
+
+            % Create Gauge_2
+            app.Gauge_2 = uigauge(app.UIFigure, 'ninetydegree');
+            app.Gauge_2.Position = [215 202 90 90];
+
+            % Create Gauge_3Label
+            app.Gauge_3Label = uilabel(app.UIFigure);
+            app.Gauge_3Label.HorizontalAlignment = 'center';
+            app.Gauge_3Label.Position = [406 165 53 22];
+            app.Gauge_3Label.Text = '线形仪表';
+
+            % Create Gauge_3
+            app.Gauge_3 = uigauge(app.UIFigure, 'linear');
+            app.Gauge_3.Position = [372 202 119 40];
+
+            % Create Gauge_4Label
+            app.Gauge_4Label = uilabel(app.UIFigure);
+            app.Gauge_4Label.HorizontalAlignment = 'center';
+            app.Gauge_4Label.Position = [573 151 65 22];
+            app.Gauge_4Label.Text = '半圆形仪表';
+
+            % Create Gauge_4
+            app.Gauge_4 = uigauge(app.UIFigure, 'semicircular');
+            app.Gauge_4.Position = [545 188 120 65];
+
+            % Create Label_2
+            app.Label_2 = uilabel(app.UIFigure);
+            app.Label_2.HorizontalAlignment = 'center';
+            app.Label_2.FontSize = 18;
+            app.Label_2.Position = [324 11 41 24];
+            app.Label_2.Text = '旋钮';
+
+            % Create Knob
+            app.Knob = uiknob(app.UIFigure, 'continuous');
+            app.Knob.ValueChangedFcn = createCallbackFcn(app, @KnobValueChanged, true);
+            app.Knob.Position = [313 69 60 60];
+
+            % Create Label_3
+            app.Label_3 = uilabel(app.UIFigure);
+            app.Label_3.FontSize = 24;
+            app.Label_3.FontWeight = 'bold';
+            app.Label_3.Position = [185 348 321 31];
+            app.Label_3.Text = '仪表显示值为旋钮所指示的值';
+        end
+    end
+
+    methods (Access = public)
+
+        % Construct app
+        function app = knob_gauge
+
+            % Create and configure components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
+```
 
