@@ -29,6 +29,5 @@
 
 ## 已选课程课表图
 
-<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/other/yanyixuanke.png" width = "100%" height = "100%" alt="选课情况表" 
-align=center>
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/other/yanyixuanke.png" width="50%" height="50%" />
 
