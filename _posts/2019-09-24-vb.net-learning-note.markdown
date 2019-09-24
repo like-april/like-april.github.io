@@ -1,0 +1,739 @@
+---
+layout:     post
+title:      "vb.NET学习笔记"
+subtitle:   " \" vb.net learning note\""
+date:       2019-09-24 18:10:00
+author:     "张凡"
+header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/frp_network.jpg"
+catalog: true
+tags:
+    - 服务器
+    - frp
+---
+
+### 1、vb的数据类型
+
+#### 1.1 vb有以下所示的数据类型：
+
+| 数据类型     | 存储分配                             | 值范围                                                       |
+| ------------ | ------------------------------------ | ------------------------------------------------------------ |
+| Boolean      | 取决于实施平台                       | **真**或**假**                                               |
+| Byte         | 1个字节                              | 0到255（无符号）                                             |
+| Char         | 2个字节                              | 0〜65535（无符号）                                           |
+| Date         | 8个字节                              | 00:00:00（午夜），时间为0001年12月31日11时31分至晚上11:59:59 |
+| Decimal      | 16字节                               | 0至+/- 79,228,162,514,264,337,593,543,950,335（+/- 7.9 ... E + 28），没有小数点; 0到+/- 7.9228162514264337593543950335，其中小数点右边有28个位 |
+| Double       | 8个字节                              | -1.79769313486231570E + 308至-4.94065645841246544E-324，对于负值  4.94065645841246544E-324至1.79769313486231570E + 308，对于正值 |
+| Integer      | 4个字节                              | -2,147,483,648至2,147,483,647（有符号）                      |
+| Long         | 8个字节                              | -9,223,372,036,854,775,808至9,223,372,036,854,775,807（签字） |
+| Object       | 在32位平台上的4个字节在64位平台8字节 | 任何类型都可以存储在Object类型的变量中                       |
+| SByte        | 1个字节                              | -128至127（签字）                                            |
+| Short        | 2个字节                              | -32,768至32,767（签字）                                      |
+| Single       | 4个字节                              | -3.4028235E + 38至-1.401298E-45为负值;  1.401298E-45至3.4028235E + 38正值 |
+| String       | 取决于实施平台                       | 0到大约20亿个Unicode字符                                     |
+| UInteger     | 4个字节                              | 0至4294967295（无符号）                                      |
+| ULONG        | 8个字节                              | 0至18,446,744,073,709,551,615（签名）                        |
+| User-Defined | 取决于实施平台                       | 结构的每个成员具有由其数据类型确定的范围并且独立于其他成员的范围 |
+| UShort       | 2个字节                              | 0至65,535（无符号）                                          |
+
+以下通过vb代码来示例这些数据类型：
+
+```vb
+Module DataTypes
+	Sub Main()
+        Dim b As Byte = 100
+        Dim n As Integer = 123456
+        Dim si As Single = 2.71828
+        Dim d As Double = 3.1415926435466441
+        Dim da As Date = Today
+        Dim c As Char = "Z"
+        Dim s As String = "Hello world!"
+        Dim bl As Boolean = True
+        Console.Write(b)
+        Console.WriteLine()
+        Console.Write(n)
+        Console.WriteLine()
+        Console.Write(si)
+        Console.WriteLine()
+        Console.Write(d)
+        Console.WriteLine()
+        Console.WriteLine("declaring on the day of: {0}", da)
+        Console.Write(c)
+        Console.WriteLine()
+        Console.Write(s)
+        Console.WriteLine()
+        Console.Write(bl)
+        Console.WriteLine()
+        Console.WriteLine("We will learn VB.Net seriously")
+        Console.ReadKey()
+    End Sub
+End Module
+```
+
+程序显示结果如下所示：
+
+```vb
+100
+123456
+2.71828
+3.14159264354664
+declaring on the day of: 2019/9/24 0:00:00
+Z
+Hello world!
+True
+We will learn VB.Net seriously
+```
+
+
+
+#### 1.2 VB.Net中的类型转换函数
+
+VB.Net提供以下内联类型转换函数： 
+
+| SN   | 功能和说明                                           |
+| ---- | ---------------------------------------------------- |
+| 1    | **CBool（表达式）** 将表达式转换为布尔数据类型。     |
+| 2    | **CByte（表达式）** 将表达式转换为字节数据类型。     |
+| 3    | **CChar（表达式）** 将表达式转换为Char数据类型。     |
+| 4    | **CDate（表达式）** 将表达式转换为Date数据类型       |
+| 5    | **CDbl（表达式）** 将表达式转换为双精度数据类型。    |
+| 6    | **CDec（表达式）** 将表达式转换为十进制数据类型。    |
+| 7    | **CInT（表达式）** 将表达式转换为整数数据类型。      |
+| 8    | **CLng函数（表达式）** 将表达式转换为长数据类型。    |
+| 9    | **CObj（表达式）** 将表达式转换为对象类型。          |
+| 10   | **CSByte（表达式）** 将表达式转换为SByte数据类型。   |
+| 11   | **CShort（表达式）** 将表达式转换为短数据类型。      |
+| 12   | **CSng函数（表达式）** 将表达式转换为单一数据类型。  |
+| 13   | **CStr的（表达式）** 将表达式转换为字符串数据类型。  |
+| 14   | **CUInt（表达式）** 将表达式转换为UInt数据类型。     |
+| 15   | **CULng（表达式）** 将表达式转换为ULng数据类型。     |
+| 16   | **CUShort（表达式）** 将表达式转换为UShort数据类型。 |
+
+下面的例子演示了其中的一些功能： 
+
+```vb
+Module DataTypes
+    Sub Main()
+        Dim n As Integer = 1234567
+        Dim da As Date = Today
+        Dim bl As Boolean = True
+        Console.WriteLine(bl)
+        Console.WriteLine(CSByte(bl))
+        Console.WriteLine(CStr(bl))
+        Console.WriteLine(CStr(da))
+        Console.WriteLine(CChar(CChar(CStr(n))))
+        Console.WriteLine(CChar(CStr(da)))
+        Console.ReadKey()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+True
+-1
+True
+2019/9/24
+1
+2
+```
+
+
+
+### 2、运算符
+
+#### 2.1 算数运算符
+
+下表显示了VB.Net支持的所有算术运算符。 假设变量A=2，变量B=7，则：
+
+| 运算符 | 描述                                                         | 示例                |
+| ------ | ------------------------------------------------------------ | ------------------- |
+| ^      | Raises one operand to the power of another                   | B^A will give 49    |
+| +      | Adds two operands                                            | A + B will give 9   |
+| -      | Subtracts second operand from the first                      | A - B will give -5  |
+| *      | Multiplies both operands                                     | A * B will give 14  |
+| /      | Divides one operand by another and returns a floating point result | B / A will give 3.5 |
+| \      | Divides one operand by another and returns an integer result | B \ A will give 3   |
+| MOD    | Modulus Operator and remainder of after an integer division  | B MOD A will give 1 |
+
+下面的例子演示了上面的功能： 
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 9
+        Dim b As Integer = 2
+        Console.WriteLine("整数A和B的值分别为{0}、{1}", a, b)
+        Console.WriteLine("A的B次方={0}", a ^ b)
+        Console.WriteLine("A+B={0}", a + b)
+        Console.WriteLine("A-B={0}", a - b)
+        Console.WriteLine("A除以B={0}", a / b)
+        Console.WriteLine("A整除B={0}", a \ b)
+        Console.WriteLine("A乘于B={0}", a * b)
+        Console.WriteLine("A余B={0}", a Mod b)
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+整数A和B的值分别为9、2
+A的B次方=81
+A+B=11
+A-B=7
+A除以B=4.5
+A整除B=4
+A乘于B=18
+A余B=1
+```
+
+
+
+#### 2.2 比较运算符
+
+下表显示了VB.Net支持的所有比较运算符。 假设变量A=10，变量B=20，则：
+
+| 运算符 | 描述                                                         | 示例                  |
+| ------ | ------------------------------------------------------------ | --------------------- |
+| =      | Checks if the values of two operands are equal or not; if yes, then condition becomes true. 检查两个操作数的值是否相等; 如果是，则条件变为真。 | (A = B) is not true.  |
+| <>     | Checks if the values of two operands are equal or not; if values are not equal, then condition becomes true. 检查两个操作数的值是否相等; 如果值不相等，则条件为真。 | (A <> B) is true.     |
+| >      | Checks if the value of left operand is greater than the value of right operand; if yes, then condition becomes true. 检查左操作数的值是否大于右操作数的值; 如果是，则条件变为真。 | (A > B) is not true.  |
+| <      | Checks if the value of left operand is less than the value of right operand; if yes, then condition becomes true. 检查左操作数的值是否小于右操作数的值; 如果是，则条件变为真。 | (A < B) is true.      |
+| >=     | Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then condition becomes true. 检查左操作数的值是否大于或等于右操作数的值; 如果是，则条件变为真。 | (A >= B) is not true. |
+| <=     | Checks if the value of left operand is less than or equal to the value of right operand; if yes, then condition becomes true. 检查左操作数的值是否小于或等于右操作数的值; 如果是，则条件变为真。 | (A <= B) is true.     |
+
+示例：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 20
+        Dim b As Integer = 10
+        Console.WriteLine("A、B的值分别为{0}、{1}", a, b)
+        If (a = b) Then
+            Console.WriteLine("A和B大小相等")
+        Else
+            Console.WriteLine("A和B大小不相等")
+        End If
+        If (a < b) Then
+            Console.WriteLine("A的值小于B")
+        Else
+            Console.WriteLine("A的值不小于B")
+        End If
+        If (a > b) Then
+            Console.WriteLine("A的值大于B")
+        Else
+            Console.WriteLine("A的值不大于B")
+        End If
+        If (a <> b) Then
+            Console.WriteLine("A和B大小不相等")
+        Else
+            Console.WriteLine("A和B大小相等")
+        End If
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+A、B的值分别为20、10
+A和B大小不相等
+A的值不小于B
+A的值大于B
+A和B大小不相等
+```
+
+
+
+### 3、条件判断（决策）
+
+#### 3.1 If ... Then语句
+
+它是控制语句的最简单形式，经常用于决策和改变程序执行的控制流程。 if-then语句的语法是：
+
+```vb
+If condition Then 
+	[Statement(s1)]
+Else
+    [Statement(s2)]
+End If
+```
+
+示例：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 20
+        If (a < 10) Then
+            Console.WriteLine("a的值小于10")
+        Else
+            Console.WriteLine("a的值不小于10")
+        End If
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+a的值不小于10
+```
+
+#### 3.2 If...Else If...Else语句
+
+If语句后面可以有一个可选的Else if ... Else语句，可以实现多次判断
+
+示例：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 20
+        If (a < 10) Then
+            Console.WriteLine("a的值小于10")
+        Else If (a>10) Then
+                Console.WriteLine("a的值大于10")
+        Else
+                Console.WriteLine("a的值等于10")
+        End If
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+```vb
+a的值大于10
+```
+
+#### 3.3 Select Case语句
+
+​		Select Case语句允许根据值列表测试变量的相等性。 每个值称为大小写，并且为每个选择大小检查打开的变量。
+
+VB.Net中Select Case语句的语法如下：
+
+```vb
+Select [ Case expression] 
+    [ Case expressionlist
+        [ statements ] ]
+    [ Case Else
+        [ elsestatements ] ]
+End Select
+```
+
+示例：
+
+```vb
+Module decisions
+   Sub Main()
+      Dim grade As Char
+      grade = "B"
+      Select grade
+          Case "A"
+              Console.WriteLine("优秀")
+          Case "B", "C"
+              Console.WriteLine("良好")
+          Case "D"
+            Console.WriteLine("及格")
+          Case "F"
+            Console.WriteLine("不及格")
+          Case Else
+            Console.WriteLine("成绩无效")
+      End Select
+      Console.WriteLine("Your grade is  {0}", grade)
+      Console.ReadLine()
+   End Sub
+End Module
+```
+
+程序运行结果：
+
+```vb
+良好
+Your grade is  B
+```
+
+### 4、循环
+
+#### 4.1 Do循环
+
+Do重复包含的语句块，而布尔条件为True或直到条件变为True。 它可以随时使用Exit Do语句终止。
+
+```vb
+Do { While | Until } condition
+    [ statements ]
+    [ Continue Do ]
+    [ statements ]
+    [ Exit Do ]
+    [ statements ]
+Loop
+或者
+Do
+    [ statements ]
+    [ Continue Do ]
+    [ statements ]
+    [ Exit Do ]
+    [ statements ]
+Loop { While | Until } condition
+```
+
+流程图
+
+![do循环](https://www.tutorialspoint.com/vb.net/images/vb.net_do_loop.jpg)
+
+示例：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 15
+        Dim b As Integer = 15
+        Do
+            Console.WriteLine("value of a: {0}", a)
+            a = a + 1
+        Loop While (a < 20)
+        Do While (b < 20)
+            Console.WriteLine("value of b: {0}", b)
+            b = b + 1
+        Loop
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+value of a: 15
+value of a: 16
+value of a: 17
+value of a: 18
+value of a: 19
+value of b: 15
+value of b: 16
+value of b: 17
+value of b: 18
+value of b: 19
+```
+
+#### 4.2 For...Next循环
+
+For...Next重复指定次数的一组语句，循环索引计算循环执行时的循环迭代数。
+
+这个循环结构的语法是：
+
+```vb
+For counter [ As datatype ] = start To end [ Step step ]
+    [ statements ]
+    [ Continue For ]
+    [ statements ]
+    [ Exit For ]
+    [ statements ]
+Next [ counter ]
+```
+
+流程图：
+
+![For...Next循环](https://www.tutorialspoint.com/vb.net/images/vb.net_fornext_loop.jpg)
+
+示例：
+
+```vb
+Module Module1
+   Sub Main()
+        For a As Integer = 15 To 20 Step 2
+            Console.WriteLine("value of a: {0}", a)
+        Next
+        Dim b As Byte
+        For b = 10 To 12
+            Console.WriteLine("Value of b: {0}", b)
+        Next
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+value of a: 15
+value of a: 17
+value of a: 19
+Value of b: 10
+Value of b: 11
+Value of b: 12
+```
+
+#### 4.3 While... End While循环
+
+只要给定条件为True，While... End While就执行一系列语句。
+
+这个循环结构的语法是：
+
+```vb
+While condition
+    [ statements ]
+    [ Continue While ]
+    [ statements ]
+    [ Exit While ]
+    [ statements ]
+End While
+```
+
+流程图：
+
+![While... End While流程图](https://www.tutorialspoint.com/vb.net/images/vb.net_while_loop.jpg)
+
+示例：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As Integer = 10
+        While a < 15
+            Console.WriteLine("value of a: {0}", a)
+            a = a + 1
+        End While
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果如下所示：
+
+```vb
+value of a: 10
+value of a: 11
+value of a: 12
+value of a: 13
+value of a: 14
+```
+
+#### 4.4 With... End With语句
+
+With... End With语句不是一个循环结构。 它执行一系列反复引用单个对象或结构的语句。
+
+这个循环结构的语法是：
+
+```
+With object
+    [ statements ]
+End With
+```
+
+示例：
+
+```vb
+Module loops
+   Public Class Book
+      Public Property Name As String
+      Public Property Author As String
+      Public Property Subject As String
+   End Class
+   Sub Main()
+      Dim aBook As New Book
+      With aBook
+          .Name = "VB.Net Programming"
+          .Author = "Zara Ali"
+          .Subject = "Information Technology"
+      End With
+      With aBook
+          Console.WriteLine(.Name)
+          Console.WriteLine(.Author)
+          Console.WriteLine(.Subject)
+      End With
+      Console.ReadLine()
+   End Sub
+End Module
+```
+
+当上述代码被编译和执行时，它产生以下结果：
+
+```
+VB.Net Programming
+Zara Ali
+Information Technology
+```
+
+
+
+### 5、字符串操作
+
+#### 5.1字符串拼接
+
+##### 5.1.1 两个字符串直接拼接
+
+用法：string1 + string2  或者 string1 & string，示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a, b As String
+        a = "Hello"
+        b = "World"
+        Console.WriteLine(a + " " + b)
+        Console.WriteLine(a & " " & b)
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+Hello World
+```
+
+##### 5.1.2 通过字符串列表拼接
+
+用法：Newstring=String.Join(" ", Oldstring)，示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim sarray() As String = {"Hello", "From", "Tutorials", "Point"}
+        Dim message1 As String = String.Join(" ", sarray)
+        Dim message2 As String = String.Join(",", sarray)
+        Console.WriteLine("Message: {0}", message1)
+        Console.WriteLine("Message: {0}", message2)
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+Message: Hello From Tutorials Point
+Message: Hello,From,Tutorials,Point
+```
+
+#### 5.2 获取字符串长度
+
+用法：Lstr=Len(str)，示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As String = "zhangfan"
+        Console.WriteLine("字符串a的长度为{0}个字符", Len(a))
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+字符串a的长度为8个字符
+```
+
+#### 5.3  判断字符串是否包含另一字符串
+
+用法：str1.Contains(str2)，判断字符串str1中是否包含另一字符串str2，示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As String = "zhangfan"
+        If (a.Contains("zhang")) Then
+            Console.WriteLine("字符串a中包含zhang")
+        Else
+            Console.WriteLine("字符串a中不包含zhang")
+        End If
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+字符串a中包含zhang
+```
+
+#### 5.4 获取子字符串
+
+用法：str2=str1.Substring(m,n)
+
+​	如果只有m，没有n，则则截取str1的第m个字符及后面的所有字符组成字符串给str1;如果既有m又有n，则截取str1的第m个字符及后面的n个字符组成字符串给str1**【备注：m值默认从0开始】**。示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As String = "zhangfan"
+        Console.WriteLine(a.Substring(5))
+        Console.WriteLine(a.Substring(2, 3))
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+fan
+ang
+```
+
+#### 5.5 字符串分割
+
+用法：strlist=str1.Split("分隔符")  或者 strlist=Split(str1,"分隔符")
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As String = "zhang fan is a student of buaa"
+        Dim b() As String
+        b = a.Split(" ")
+        For i As Integer = 0 To b.Length - 1 'b.Length 为字符串列表的长度
+            Console.WriteLine(b(i))
+        Next
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+zhang
+fan
+is
+a
+student
+of
+buaa
+```
+
+#### 5.6 字符串替换
+
+用法：strlist=str1.Replace("原字符"，“替换字符”)  或者 strlist=Split(str1,"原字符",“替换字符”)。示例如下所示：
+
+```vb
+Module Module1
+    Sub Main()
+        Dim a As String = "zhang fan is a student of HFUT"
+        Dim b As String
+        b = a.Replace("HFUT", "BUAA")
+        Console.WriteLine(b)
+        Console.ReadLine()
+    End Sub
+End Module
+```
+
+程序运行结果：
+
+```
+zhang fan is a student of BUAA
+```
+
+
+
+
+
