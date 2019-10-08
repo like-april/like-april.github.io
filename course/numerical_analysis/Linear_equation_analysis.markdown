@@ -357,8 +357,7 @@ End Class
 
 #### 1.2 程序界面
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/xianxingfangchengzu.png)
-
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/xianxingfangchengzu.png" width="100%" height="100%" />
 
 
 ### 二、耗时分析
@@ -381,23 +380,21 @@ End Class
 
 **计算矩阵阶数和计算耗时之间的拟合关系分别如下图所示：**
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/lieguass.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/lieguass.png" width="100%" height="100%" />
 
 > 拟合关系式：Y=0.000005x<sup>3</sup>+-0.0008x<sup>2</sup>-0.5731x+61.799
 
 
-
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/doolittle.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/doolittle.png" width="100%" height="100%" />
 
 > 拟合关系式：Y=0.000004x<sup>3</sup>+0.0015x<sup>2</sup>-1.746x+226.71
 
 
-
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/crout.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/crout.png" width="100%" height="100%" />
 
 > 拟合关系式：Y=0.000004x<sup>3</sup>+0.0012x<sup>2</sup>-1.4587x+185.06
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/liedoolitte.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/liedoolitte.png" width="100%" height="100%" />
 
 > 拟合关系式：Y=0.000004x<sup>3</sup>+0.0013x<sup>2</sup>-1.5215x+194.81
 
@@ -426,9 +423,9 @@ pylab.grid(True)
 
 得到的图表如下所示：
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timeanalysis-1.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timeanalysis-1.png" width="100%" height="100%" />
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timeanalysis.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timeanalysis.png" width="100%" height="100%" />
 
 从上图可以看出，**列主元Doolittle耗时 ≈ Doolittle耗时 ≈ Crout耗时 <  列主元Guass消元法耗时**，但综合考虑的话，<u>列主元Doolittle消元法最优</u>。
 
