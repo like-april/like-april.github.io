@@ -2,7 +2,7 @@
 
 **”数值分析“计算实习第三题**
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timu.jpg)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/timu.jpg" width="100%" height="100%" />
 
 ### 1 算法和设计方案
 
@@ -12,7 +12,7 @@
 
 ​	线性方程组的Doolittle分解法算法如下图所示：
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/doolittle_-1.jpg)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/doolittle_-1.jpg" width="100%" height="100%" />
 
 ​	Doolittle算法主要用于反幂法中求解特征值向量。
 
@@ -20,19 +20,19 @@
 
 ​	幂法算法用来求解矩阵的**按模最大特征值**（绝对值最大），其算法如下所示：
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/mifa.jpg)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/mifa.jpg" width="100%" height="100%" />
 
 #### 1.3 反幂法算法
 
 ​	反幂法算法用来求解矩阵的**按模最小特征值**（绝对值最小），其算法如下所示：
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/fanmifa.jpg)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/fanmifa.jpg" width="100%" height="100%" />
 
 #### 1.4 设计方案
 
 ​	程序逻辑和各个算法之间的调用如下图所示：
 
-![](https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/suanfajiegou.png)
+<img src="https://aerozf.oss-cn-beijing.aliyuncs.com/images/numerical_analysis/suanfajiegou.png" width="100%" height="100%" />
 
 
 
