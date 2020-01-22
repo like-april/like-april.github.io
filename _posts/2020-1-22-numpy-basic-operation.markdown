@@ -4,7 +4,7 @@ title:      "frp服务器和客户端配置（内网穿透）"
 subtitle:   " \" frp server and client configuration\""
 date:       2019-07-13 17:01:00
 author:     "张凡"
-header-img: "https://aerozf.oss-cn-beijing.aliyuncs.com/images/frp_network.jpg"
+header-img: "http://img5.imgtn.bdimg.com/it/u=1853946580,2025495919&fm=26&gp=0.jpg"
 catalog: true
 tags:
     - 服务器
