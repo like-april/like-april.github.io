@@ -1,10 +1,10 @@
 # Site settings
-title: Auroraus Blog
-SEOTitle: 张凡的博客 | Auroraus Blog
+title: Like Blog
+SEOTitle: 李可的博客 | Like Blog
 header-img: img/home-bg-art.jpg
-email: aerozhang525@163.com
-description: "This is Auroraus's blog"
-url: "https://zhangfan525.top"              # your host, for absolute URL
+email: 2032801833@qq.com
+description: "This is Like's blog"
+url: "https://likeapril.site"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -12,9 +12,9 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username:     auroraus
+#weibo_username:     auroraus
 #zhihu_username:     huxpro
-#github_username:    
+github_username:    like-april
 #twitter_username:   huxpro
 #facebook_username:  huxpro
 #linkedin_username:  firstname-lastname-idxxxx
@@ -67,7 +67,7 @@ netease_comment: false
 
 # Analytics settings
 # Baidu Analytics 
-ba_track_id: [11accef3bbd97c1332e50a1a70fd60ba]
+#ba_track_id: [11accef3bbd97c1332e50a1a70fd60ba]
 
 # Google Analytics
 #ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
@@ -77,7 +77,7 @@ ba_track_id: [11accef3bbd97c1332e50a1a70fd60ba]
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "业精于勤而荒于嬉，行成于思而毁于随"
+sidebar-about-description: "行百里者半九十"
 sidebar-avatar: https://aerozf.oss-cn-beijing.aliyuncs.com/images/photo.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -102,7 +102,7 @@ page-mathjax: false
 # Friends
 friends: [
     {
-        title: "张凡的英语阅读网站",
-        href: "https://liuwen.applinzi.com"
+        title: "张凡的个人博客",
+        href: "https://zhangfan525.top"
     }
 ]
