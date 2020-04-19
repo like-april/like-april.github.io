@@ -78,7 +78,7 @@ netease_comment: false
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "行百里者半九十"
-sidebar-avatar: https://aerozf.oss-cn-beijing.aliyuncs.com/images/photo.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://fanfile.oss-cn-hangzhou.aliyuncs.com/LikeBlog/images/like.jpg     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
